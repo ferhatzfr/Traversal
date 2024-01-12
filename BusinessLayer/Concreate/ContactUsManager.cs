@@ -27,6 +27,11 @@ namespace BusinessLayer.Concreate
             _contactUsDal.Insert(t);
         }
 
+        public void TContactUsStatusChangeToFalse(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void TDelete(ContactUS t)
         {
             _contactUsDal.Delete(t);
@@ -35,6 +40,16 @@ namespace BusinessLayer.Concreate
         public List<ContactUS> TGetList()
         {
             return _contactUsDal.TGetList();
+        }
+
+        public List<ContactUS> TGetListContactUsByFalse()
+        {
+            return _contactUsDal.GetListContactUsByFalse();
+        }
+
+        public List<ContactUS> TGetListContactUsByTrue()
+        {
+            return _contactUsDal.GetListContactUsByTrue();
         }
 
         public void TUpdate(ContactUS t)

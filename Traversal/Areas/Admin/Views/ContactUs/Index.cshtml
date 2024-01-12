@@ -1,0 +1,73 @@
+﻿@model List<ContactUS>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Gelen Mesajlar</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7">#</th>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7">Gönderen</th>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7">E-Posta</th>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7 ps-2">Tarih</th>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7 ps-2">Başlık</th>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7 ps-2">Mesaj</th>
+                                    <th class="text-center text-secondary text-sm font-weight-bolder opacity-7 ps-2">Sil</th>
+                                   
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <th>
+                                            <p class="text-center font-weight-bold mb-0">@count</p>
+                                        </th>
+                                        <td>
+                                            <p class="text-center font-weight-bold mb-0">@item.Name</p>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div class="text-center flex-column justify-content-center">
+                                                    <h6 class="mb-0 text-sm">@item.Mail</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="text-center font-weight-bold mb-0">@(((DateTime)item.MessageDate).ToString("dd-MM-yyyy"))</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-center font-weight-bold mb-0">@item.Subject</p>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <a href="#" class="badge badge-sm bg-gradient-info">Mesajı Oku</a>
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            <a href="#" class="badge badge-sm bg-gradient-danger">Sil</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="btn btn-success">Yeni Kullanıcı Oluştur</a>
+</div>
+
