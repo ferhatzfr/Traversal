@@ -1,0 +1,78 @@
+﻿@model EntityLayer.Concreate.Destination
+
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12 ">
+            <div class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <h6 class="mb-0">Rota Güncelleme Sayfası</h6>
+                </div>
+                <div class="card-body p-3">
+                    <form method="post" enctype="multipart/form-data" class="signin-form">
+
+                        <input type="hidden" asp-for="DestinationID" />
+
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Şehir")
+                            <input type="text" asp-for="City" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Gün Gece")
+                            <input type="text" asp-for="DayNight" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Kapasite")
+                            <input type="text" asp-for="Capacity" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Fiyat")
+                            <input type="text" asp-for="Price" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Görsel1")
+                            <input type="text" asp-for="Image" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Görsel2")
+                            <input type="text" asp-for="Image2" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Kapak Görseli")
+                            <input type="text" asp-for="CoverImage" class="form-control" />
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Detay 1")
+                            <textarea cols="30" rows="5" class="form-control" asp-for="Details1"></textarea>
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Detay 2")
+                            <textarea cols="30" rows="5" class="form-control" asp-for="Details2"></textarea>
+                        </div>
+                        <br />
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Açıklama")
+                            <textarea cols="30" rows="5" class="form-control" asp-for="Description"></textarea>
+                        </div>
+
+                        <br />
+                        <button class="btn btn-success">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

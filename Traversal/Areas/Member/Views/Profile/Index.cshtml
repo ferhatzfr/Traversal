@@ -1,0 +1,53 @@
+﻿@model Traversal.Areas.Member.Models.UserEditViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12 ">
+            <div class="card h-100">
+                <div class="card-header pb-0 p-3">
+                    <h6 class="mb-0">Profil Güncelleme Sayfası</h6>
+                </div>
+                <div class="card-body p-3">
+                    <form method="post" enctype="multipart/form-data" class="signin-form">
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Adınız")
+                            <input type="text" asp-for="name" class="form-control" />
+                        </div>
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Soyadınız")
+                            <input type="text" asp-for="surname" class="form-control" />
+                        </div>
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("E-Posta")
+                            <input type="text" asp-for="mail" class="form-control" />
+                        </div>
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Şifreniz")
+                            <input type="password" asp-for="password" class="form-control" />
+                        </div>
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Şifre Tekrar")
+                            <input type="password" asp-for="confirmpassword" class="form-control" />
+                        </div>
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Telefon")
+                            <input type="text" asp-for="phonenumber" class="form-control" />
+                        </div>
+
+                        <div class="form-input" style="padding-left: 10px;padding-right: 10px;">
+                            @Html.Label("Görsel Ekle")
+                            <input type="file" asp-for="Image" class="form-control" />
+                        </div>
+                        <br />
+                        <button class="btn btn-success">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
