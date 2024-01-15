@@ -14,5 +14,3 @@ namespace BusinessLayer.Abstract
         void TContactUsStatusChangeToFalse(int id);
     }
 }
-
-//67_V

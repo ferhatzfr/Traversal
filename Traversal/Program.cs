@@ -1,9 +1,13 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concreate;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concreate;
 using DataAccessLayer.EntityFramework;
+using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concreate;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Traversal.Models;
@@ -12,7 +16,7 @@ using Traversal.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation();
 
 //Authorize iþlemleri 
 builder.Services.AddDbContext<Context>();
@@ -36,6 +40,9 @@ builder.Services.AddScoped<IGuideDal, EfGuideDal>();
 builder.Services.AddScoped<IContactUsService, ContactUsManager>();
 builder.Services.AddScoped<IContactUsDal, EfContactUsDal>();
 
+builder.Services.AddScoped<IAnnouncementService, AnnouncementManager>();
+builder.Services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
+
 
 builder.Services.AddLogging(x =>
 {
@@ -43,6 +50,10 @@ builder.Services.AddLogging(x =>
     x.SetMinimumLevel(LogLevel.Debug);
     x.AddDebug();
 });
+
+builder.Services.AddAutoMapper(typeof(StartupBase));
+builder.Services.AddTransient<IValidator<AnnouncementAddDtos>,AnnouncementValidator>();
+
 
 builder.Services.AddMvc(Config =>
 {
@@ -65,7 +76,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404","?code={0}");
+app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404", "?code={0}");
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
